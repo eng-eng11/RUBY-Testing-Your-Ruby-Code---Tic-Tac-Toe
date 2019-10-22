@@ -10,6 +10,7 @@ files:
     - "config/*"
     - "Guardfile"
     - "Rakefile"
+    - "board.rb"
     
 fixers:
   enable: true
