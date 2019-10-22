@@ -1,8 +1,8 @@
 AllCops:
   Exclude:
     - "bin/*"
-    - "db/*"
-    - "config/*"
+    - "db/**/*"
+    - "config/**/*"
     - "Guardfile"
     - "Rakefile"
   DisplayCopNames: true
@@ -18,13 +18,7 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  ExcludedMethods: ["describe"]
-Metrics/ModuleLength:
-  Max: 150
-Metrics/CyclomaticComplexity:
-  Max: 100
-Metrics/PerceivedComplexity:
-  Max: 100
+  ExcludedMethods: ['describe']
 
 Style/Documentation:
   Enabled: false
@@ -38,3 +32,4 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+  
