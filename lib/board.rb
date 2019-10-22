@@ -9,14 +9,10 @@ class Board
     @grid = generate_grid
   end
 
-  public
-
   def display_grid
     bottom = ''
 
-    grid.each do |row|
-      puts row.each { |cell| cell }.join('  ')
-    end
+    grid.each(&method(:method_name))
 
     COLUMNS.times do |i|
       bottom << '  ' << (i + 1).to_s
@@ -31,7 +27,7 @@ class Board
     grid
   end
 
-  def is_valid_move?(column)
+  def valid_move?(column)
     row = ROWS - 1
     while row >= 0
       return true if grid[row][column] == '*'
@@ -42,19 +38,22 @@ class Board
   end
 
   def all_win_check
-    winner = ''
-    if check_draw == false
+    if !check_draw
       winner = check_horizontal_win
       winner = check_vertical_win if winner == ''
       winner = check_diagonal_win if winner == ''
       winner = check_reverse_diagonal_win if winner == ''
-      return winner
+      winner
     else
-      return 'draw'
+      'draw'
     end
   end
 
   private
+
+  def method_name(row)
+    puts row.each { |cell| cell }.join('  ')
+  end
 
   def generate_grid
     self.grid = []

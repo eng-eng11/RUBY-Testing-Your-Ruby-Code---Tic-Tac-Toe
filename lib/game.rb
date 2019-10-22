@@ -7,8 +7,8 @@ class Game
   attr_accessor :board, :player_1, :player_2, :current_player, :other_player
   def initialize
     @board = Board.new
-    @player_1 = Player.new
-    @player_2 = Player.new
+    @player1 = Player.new
+    @player2 = Player.new
     @current_player = player_1
     @other_player = player_2
   end
@@ -21,7 +21,7 @@ class Game
       puts "#{current_player.name} choose the column:"
       col = gets.chomp.to_i
 
-      until board.is_valid_move?(col - 1)
+      until board.valid_move?(col - 1)
         puts 'Invalid move, try again: '
         col = gets.chomp.to_i
       end
