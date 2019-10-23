@@ -4,7 +4,7 @@ This is our solution to Microverse's fourth Ruby project. It is project where we
 
 The project description can be found [here](https://www.theodinproject.com/courses/ruby-programming/lessons/testing-your-ruby-code).
 
-A demo for the project can be found [here]().
+A demo for the project can be found [here](Future link here).
 
 ## Project contributors:
 
