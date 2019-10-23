@@ -11,4 +11,3 @@ class Player
     @cells_chosen.push(cell_number)
   end
 end
-gi

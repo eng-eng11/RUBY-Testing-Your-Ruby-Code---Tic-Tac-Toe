@@ -1,5 +1,10 @@
-# frozen_string_literal: true
+require './game.rb'
 
-require 'lib/game.rb'
-g = Game.new
-g.play
+game = Game.new
+game.switch_player
+game.populate_display
+until game.over?
+  game.switch_player
+  game.play_turn
+  game.populate_display
+end

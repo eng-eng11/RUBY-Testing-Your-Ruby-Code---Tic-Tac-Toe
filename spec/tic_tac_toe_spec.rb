@@ -34,7 +34,7 @@ describe Board do
 end
 
 describe Player do
-  subject (:player){Player.new('Ron', 'x')}
+  subject(:player){Player.new('Ron', 'x')}
 
   describe '#add_cell' do
     it "updates the player's list of cells taken" do
