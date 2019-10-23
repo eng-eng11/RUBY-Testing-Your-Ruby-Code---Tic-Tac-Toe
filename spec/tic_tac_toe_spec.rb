@@ -16,7 +16,7 @@ describe Game do
   describe '#over?' do
     it 'returns true when a win condition is met' do
       (1..3).each do |i|
-        game.player_1.add_cell(i)
+        game.player_one.add_cell(i)
       end
       expect(game.over?).to be true
     end

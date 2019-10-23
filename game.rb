@@ -4,18 +4,18 @@ require './player.rb'
 require './board.rb'
 
 class Game
-  attr_reader :player_1, :player_2, :board, :current_player
+  attr_reader :player_one, :player_two, :board, :current_player
 
   def initialize
     @selected_token = nil
-    @player_1 = welcome_player('player_1')
-    @player_2 = welcome_player('player_2')
+    @player_one = welcome_player('player_1')
+    @player_two = welcome_player('player_2')
     @board = Board.new
-    @current_player = @player_1
+    @current_player = @player_one
   end
 
   def play_turn
-    location = get_location
+    location = obtain_location
     board.update_field_values(current_player.token, location)
     current_player.add_cell(location)
   end
@@ -32,7 +32,7 @@ class Game
   end
 
   def switch_player
-    @current_player = @current_player == @player_1 ? @player_2 : @player_1
+    @current_player = @current_player == @player_one ? @player_two : @player_one
   end
 
   def over?
@@ -82,7 +82,7 @@ class Game
     token
   end
 
-  def get_location
+  def obtain_location
     puts "Your turn, #{current_player.name}! Choose a space."
     location = gets.chomp.to_i
     until location.between?(1, 9) && @board.board_values[location - 1] == ' '
