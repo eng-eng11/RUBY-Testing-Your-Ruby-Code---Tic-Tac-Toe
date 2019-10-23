@@ -1,23 +1,13 @@
-# frozen_string_literal: true
-
 class Player
-  @count = 0
-  attr_accessor :name, :color
+  attr_reader   :name, :token, :cells_chosen
 
-  def initialize
-    @name = obtain_name
-    @color = obtain_color
+  def initialize(name, token)
+    @name = name
+    @token = token
+    @cells_chosen = []
   end
 
-  def obtain_name
-    @count += 1
-    puts 'Enter your name'
-    @name = gets.chomp
-  end
-
-  def obtain_color
-    color = @count == 1 ? '☺' : '☻'
-    puts "Your color is #{color}"
-    @color = color.slice(0).upcase
+  def add_cell(cell_number)
+    @cells_chosen.push(cell_number)
   end
 end
