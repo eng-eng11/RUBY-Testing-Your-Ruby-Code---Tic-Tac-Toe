@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require './game.rb'
 
-game = Game.new()
+game = Game.new
 game.switch_player
 game.populate_display
 until game.over?
