@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Player
-  attr_reader   :name, :token, :cells_chosen
+  attr_reader :name, :token, :cells_chosen
 
   def initialize(name, token)
     @name = name
