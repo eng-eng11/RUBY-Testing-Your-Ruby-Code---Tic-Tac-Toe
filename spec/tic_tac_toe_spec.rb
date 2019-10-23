@@ -1,7 +1,7 @@
 require './game.rb'
 
 describe Game do
-  subject(:game){Game.new()}
+  subject(:game) { Game.new() }
 
   describe '#switch_player' do
     it "changes current_player to the other player" do
@@ -23,7 +23,7 @@ describe Game do
 end
 
 describe Board do
-  subject(:board){Board.new()}
+  subject(:board) { Board.new() }
 
   describe '#update_field_values' do
     it "add's a chosen location to the list of spaces taken" do
@@ -34,7 +34,7 @@ describe Board do
 end
 
 describe Player do
-  subject(:player){Player.new('Ron', 'x')}
+  subject(:player) { Player.new('Ron', 'x') }
 
   describe '#add_cell' do
     it "updates the player's list of cells taken" do
