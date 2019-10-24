@@ -7,7 +7,8 @@ describe Board do
   let(:board) { Board.new }
 
   it 'draw board appropriately' do
-    expect(board.draw_board([1, 2, 3, 4, 5, 6, 7, 8, 9])).to eq("\t 1 | 2 | 3 \n\t---|---|---\n\t 4 | 5 | 6 \n\t---|---|---\n\t 7 | 8 | 9 ")
+    expect(board.draw_board([1, 2, 3, 4, 5, 6, 7, 8, 9])).to eq("\t 1 | 2 | 3 \n\t---|---|---\n\t 4 | 5 | 6
+                                                                  \n\t---|---|---\n\t 7 | 8 | 9 ")
   end
 
   it 'update field values properly' do
