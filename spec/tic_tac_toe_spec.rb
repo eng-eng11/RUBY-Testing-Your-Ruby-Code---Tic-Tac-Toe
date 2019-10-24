@@ -3,7 +3,7 @@
 require './board.rb'
 require './game.rb'
 
-# tests for the class board
+# tests for the class Board
 describe Board do
   let(:board) { Board.new }
 
@@ -23,7 +23,7 @@ describe Board do
   end
 end
 
-# tests for the class game
+# tests for the class Game
 describe Game do
   let(:game) { Game.new }
 
@@ -80,6 +80,17 @@ describe Game do
 
     it 'continue the game if the given array is not one from the winning options' do
       expect(game.over?([1, 4, 9])).to eq(false)
+    end
+  end
+end
+
+# tests for the class Player
+describe Player do
+  let(:player) { Player.new('Test name', 'X') }
+
+  describe '#add_cell' do
+    it 'correctly add the cell selected to the player selected cell' do
+      expect(player.add_cell(3)).to eq([3])
     end
   end
 end
