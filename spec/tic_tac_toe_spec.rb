@@ -3,18 +3,23 @@
 require './board.rb'
 # require './game.rb'
 
+# tests for the class Board
 describe Board do
-  let(:board) { Board.new }
-
-  it 'draw board appropriately' do
-    str_a = "\t 1 | 2 | 3 \n\t---|---|---"
-    str_b = "\n\t 4 | 5 | 6 \n\t---|---|---"
-    str_c = "\n\t 7 | 8 | 9 "
-    expect(board.draw_board([1, 2, 3, 4, 5, 6, 7, 8, 9])).to eq(str_a + str_b + str_c)
+  describe '#draw_board' do
+    let(:board) { Board.new }
+    it 'draw board appropriately' do
+      str_a = "\t 1 | 2 | 3 \n\t---|---|---"
+      str_b = "\n\t 4 | 5 | 6 \n\t---|---|---"
+      str_c = "\n\t 7 | 8 | 9 "
+      expect(board.draw_board([1, 2, 3, 4, 5, 6, 7, 8, 9])).to eq(str_a + str_b + str_c)
+    end
   end
 
-  it 'update field values properly' do
-    expect(board.update_field_values('X', 3)).to eq('X')
+  describe 'update_field_values' do
+    let(:board) { Board.new }
+    it 'update field values properly' do
+      expect(board.update_field_values('X', 3)).to eq('X')
+    end
   end
 end
 
