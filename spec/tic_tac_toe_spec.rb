@@ -5,8 +5,9 @@ require './game.rb'
 
 # tests for the class board
 describe Board do
+  let(:board) { Board.new }
+
   describe '#draw_board' do
-    let(:board) { Board.new }
     it 'draw board appropriately' do
       str_a = "\t 1 | 2 | 3 \n\t---|---|---"
       str_b = "\n\t 4 | 5 | 6 \n\t---|---|---"
@@ -16,52 +17,69 @@ describe Board do
   end
 
   describe '#update_field_values' do
-    let(:board) { Board.new }
     it 'update field values properly' do
       expect(board.update_field_values('X', 3)).to eq('X')
     end
   end
 end
 
+# tests for the class game
 describe Game do
-  subject(:game) { Game.new }
+  let(:game) { Game.new }
 
-  describe '#switch_player' do
-    it 'changes current_player to the other player' do
-      player = game.current_player
-      game.switch_player
-      expect(game.current_player).not_to eq(player)
+  describe '#play_turn' do
+    it 'sets a turn adequately returning 0 for success' do
+      expect(game.play_turn).to eq([0])
     end
   end
 
-  describe '#over?' do
-    it 'returns true when a win condition is met' do
-      (1..3).each do |i|
-        game.player_one.add_cell(i)
-      end
-      expect(game.over?).to be true
+  describe '#populate_display' do
+    it 'populates the display appropriately returning 0 for success' do
+      expect(game.populate_display).to eq(0)
     end
   end
-end
 
-describe Board do
-  subject(:board) { Board.new }
-
-  describe '#update_field_values' do
-    it "add's a chosen location to the list of spaces taken" do
-      board.update_field_values('x', 5)
-      expect(board.board_values).to eq([' ', ' ', ' ', ' ', 'x', ' ', ' ', ' ', ' '])
+  describe 'switch_player' do
+    it 'successfully switch the player by returning 0 for success' do
+      expect(game.switch_player).to eq(0)
     end
   end
-end
 
-describe Player do
-  subject(:player) { Player.new('Ron', 'x') }
+  describe 'over?' do
+    it 'successfully finish the game with the first winning condition' do
+      expect(game.over?([1, 2, 3])).to eq(true)
+    end
 
-  describe '#add_cell' do
-    it "updates the player's list of cells taken" do
-      player.add_cell(3)
-      expect(player.cells_chosen).to eq([3])
+    it 'successfully finish the game with the second winning condition' do
+      expect(game.over?([4, 5, 6])).to eq(true)
+    end
+
+    it 'successfully finish the game with the third winning condition' do
+      expect(game.over?([7, 8, 9])).to eq(true)
+    end
+
+    it 'successfully finish the game with the fourth winning condition' do
+      expect(game.over?([1, 4, 7])).to eq(true)
+    end
+
+    it 'successfully finish the game with the fifth winning condition' do
+      expect(game.over?([2, 5, 8])).to eq(true)
+    end
+
+    it 'successfully finish the game with the sixth winning condition' do
+      expect(game.over?([3, 6, 9])).to eq(true)
+    end
+
+    it 'successfully finish the game with the seventh winning condition' do
+      expect(game.over?([1, 5, 9])).to eq(true)
+    end
+
+    it 'successfully finish the game with the eighth winning condition' do
+      expect(game.over?([3, 5, 7])).to eq(true)
+    end
+
+    it 'continue the game if the given array is not one from the winning options' do
+      expect(game.over?([1, 4, 9])).to eq(false)
     end
   end
 end
