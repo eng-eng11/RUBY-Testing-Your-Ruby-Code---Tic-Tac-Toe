@@ -36,16 +36,14 @@ class Game
                       [1, 4, 7], [2, 5, 8], [3, 6, 9],
                       [1, 5, 9], [3, 5, 7]]
 
-    if grid.empty?
-      var = current_player.cells_chosen
-    else
-      var = grid
-    end
+    var = if grid.empty?
+            current_player.cells_chosen
+          else
+            grid
+          end
 
     win_conditions.each do |condition|
-      if (condition - var).empty?
-        return true
-      end
+      return true if (condition - var).empty?
     end
     if board.board_values.none? { |value| value == ' ' }
       puts 'Tie game, no winners!'
