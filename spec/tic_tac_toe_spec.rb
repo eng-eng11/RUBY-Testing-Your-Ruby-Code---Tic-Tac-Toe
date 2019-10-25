@@ -4,7 +4,7 @@ require './board.rb'
 require './game.rb'
 
 # tests for the class Board
-describe Board do
+RSpec.describe Board do
   let(:board) { Board.new }
 
   describe '#draw_board' do
@@ -24,7 +24,7 @@ describe Board do
 end
 
 # tests for the class Game
-describe Game do
+RSpec.describe Game do
   let(:game) { Game.new }
 
   describe '#play_turn' do
@@ -85,7 +85,7 @@ describe Game do
 end
 
 # tests for the class Player
-describe Player do
+RSpec.describe Player do
   let(:player) { Player.new('Test name', 'X') }
 
   describe '#add_cell' do
