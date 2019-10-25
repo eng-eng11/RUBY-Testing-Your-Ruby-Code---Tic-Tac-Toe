@@ -8,8 +8,8 @@ class Game
 
   def initialize
     @selected_token = nil
-    @player_one = welcome_player('player_1')
-    @player_two = welcome_player('player_2')
+    @player_one = Player.new('Player One', 'X')
+    @player_two = Player.new('Player Two', 'O')
     @board = Board.new
     @current_player = @player_one
   end
@@ -18,31 +18,32 @@ class Game
     location = obtain_location
     board.update_field_values(current_player.token, location)
     current_player.add_cell(location)
+    0
   end
 
   def populate_display
-    puts
-    puts 'LEGEND:'
-    @board.draw_board(@board.legend_values)
-    puts 'Use the legend to pick a space!'
-    puts
-    puts 'GAME BOARD:'
     @board.draw_board(@board.board_values)
-    puts
+    0
   end
 
   def switch_player
     @current_player = @current_player == @player_one ? @player_two : @player_one
+    0
   end
 
-  def over?
+  def over?(grid)
     win_conditions = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
                       [1, 4, 7], [2, 5, 8], [3, 6, 9],
                       [1, 5, 9], [3, 5, 7]]
 
+    if grid.empty?
+      var = current_player.cells_chosen
+    else
+      var = grid
+    end
+
     win_conditions.each do |condition|
-      if (condition - current_player.cells_chosen).empty?
-        puts "#{current_player.name} wins!"
+      if (condition - var).empty?
         return true
       end
     end
@@ -83,8 +84,8 @@ class Game
   end
 
   def obtain_location
-    puts "Your turn, #{current_player.name}! Choose a space."
-    location = gets.chomp.to_i
+    # puts "Your turn, #{current_player.name}! Choose a space."
+    location = 1
     until location.between?(1, 9) && @board.board_values[location - 1] == ' '
       unless location.between?(1, 9)
         puts 'You need to select a value from 1 to 9. Please select again:'

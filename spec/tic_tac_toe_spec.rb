@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require './board.rb'
-require './game.rb'
+require_relative '../board.rb'
+require_relative '../game.rb'
+require_relative '../player.rb'
 
 # tests for the class Board
 RSpec.describe Board do
@@ -29,7 +30,7 @@ RSpec.describe Game do
 
   describe '#play_turn' do
     it 'sets a turn adequately returning 0 for success' do
-      expect(game.play_turn).to eq([0])
+      expect(game.play_turn).to eq(0)
     end
   end
 
